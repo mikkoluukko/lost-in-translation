@@ -7,13 +7,14 @@ const Login = () => {
   const history = useHistory();
 
   const handleLoginComplete = (user) => {
-    setStorage('react_app_session', { user });
-    history.replace('/dashboard');
+    const translations = [];
+    setStorage('react_app_session', { user, translations });
+    history.replace('/translator');
   };
 
   return (
     <div>
-      {user && <Redirect to="/dashboard" />}
+      {user && <Redirect to="/translator" />}
       <h1>Login to translator</h1>
       <LoginForm complete={handleLoginComplete} />
     </div>
