@@ -1,10 +1,11 @@
 import TranslatorForm from '../forms/TranslatorForm';
 import SignText from './SignText'
+import { useState } from 'react';
 import { getStorage, setStorage } from '../../utils/localStorage';
 import { Redirect, Link, useHistory } from 'react-router-dom';
 
 const Translator = () => {
-  let displayTranslation = false;
+  const [displayTranslation, setDisplayTranslation] = useState(false);
 
   const handleTranslate = (translation) => {
     let { user, translations } = getStorage('react_app_session');
@@ -14,6 +15,7 @@ const Translator = () => {
     translations.push(translation);
     setStorage('react_app_session', { user, translations });
     history.replace('/translator');
+    setDisplayTranslation(true);
   };
 
   const handleLogoutClick = (ev) => {
