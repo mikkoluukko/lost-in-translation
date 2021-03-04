@@ -6,7 +6,8 @@ const TranslatorForm = (props) => {
     props.translate(originalText);
   };
 
-  const handleTextChange = (ev) => setOriginalText(ev.target.value.trim().toLowerCase());
+  const handleTextChange = (ev) =>
+    setOriginalText(ev.target.value.trim().toLowerCase());
 
   return (
     <form>

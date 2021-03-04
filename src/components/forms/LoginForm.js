@@ -3,7 +3,7 @@ import { useState } from 'react';
 const LoginForm = (props) => {
   const [username, setUsername] = useState('');
   const handleLoginClick = (ev) => {
-    props.complete(username);
+    props.loginComplete(username);
   };
 
   const handleUsernameChange = (ev) => setUsername(ev.target.value.trim());

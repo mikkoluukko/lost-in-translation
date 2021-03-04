@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/containers/Login';
 import Translator from './components/containers/Translator';
 import Profile from './components/containers/Profile';

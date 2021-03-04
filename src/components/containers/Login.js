@@ -16,7 +16,7 @@ const Login = () => {
     <div>
       {user && <Redirect to="/translator" />}
       <h1>Login to translator</h1>
-      <LoginForm complete={handleLoginComplete} />
+      <LoginForm loginComplete={handleLoginComplete} />
     </div>
   );
 };

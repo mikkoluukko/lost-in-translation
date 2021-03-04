@@ -1,8 +1,9 @@
 import TranslatorForm from '../forms/TranslatorForm';
-import SignText from './SignText'
+import TranslatedBox from './TranslatedBox';
 import { useState } from 'react';
 import { getStorage, setStorage } from '../../utils/localStorage';
-import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const Translator = () => {
   const [displayTranslation, setDisplayTranslation] = useState(false);
@@ -10,7 +11,7 @@ const Translator = () => {
   const handleTranslate = (translation) => {
     let { user, translations } = getStorage('react_app_session');
     if (translations.length === 10) {
-      translations.shift();      
+      translations.shift();
     }
     translations.push(translation);
     setStorage('react_app_session', { user, translations });
@@ -18,25 +19,23 @@ const Translator = () => {
     setDisplayTranslation(true);
   };
 
-  const handleLogoutClick = (ev) => {
-    localStorage.clear();
-    history.replace('/translator');
-  };
+  const redirect = () => {
+    history.push('/profile')
+  }
 
   const history = useHistory();
   const { user } = getStorage('react_app_session');
   return (
     <div>
       {!user && <Redirect to="/" />}
-      <Link to="/profile">{user}'s profile page</Link>
+      <Button className="m-2" variant="info" type="button" onClick={redirect}>
+        {user}'s profile page
+      </Button>
       <h1>Welcome to the Translator</h1>
       <TranslatorForm translate={handleTranslate} />
-      <SignText display={displayTranslation}/>
-      <button type="button" onClick={handleLogoutClick}>
-        Logout
-      </button>
+      <TranslatedBox display={displayTranslation} />
     </div>
-  )
+  );
 };
 
 export default Translator;
