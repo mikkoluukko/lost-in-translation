@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const TranslatorForm = (props) => {
   const [originalText, setOriginalText] = useState('');
-  const handleLoginClick = (ev) => {
+  const handleTranslateClick = (ev) => {
     props.translate(originalText);
   };
 
@@ -10,21 +15,21 @@ const TranslatorForm = (props) => {
     setOriginalText(ev.target.value.trim().toLowerCase());
 
   return (
-    <form>
-      <div>
-        <label>Original text: </label>
-        <input
-          type="text"
-          placeholder="Enter text to translate"
-          onChange={handleTextChange}
-        />
-      </div>
-      <div>
-        <button type="button" onClick={handleLoginClick}>
-          Translate
-        </button>
-      </div>
-    </form>
+    <Row className="justify-content-md-center">
+      <Col md="5">
+        <InputGroup>
+          <FormControl
+            placeholder="Enter text to translate"
+            onChange={handleTextChange}
+          />
+          <InputGroup.Append>
+            <Button variant="outline-secondary" onClick={handleTranslateClick}>
+              Translate
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Col>
+    </Row>
   );
 };
 

@@ -6,6 +6,7 @@ import {
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
 import Login from './components/containers/Login';
 import Translator from './components/containers/Translator';
 import Profile from './components/containers/Profile';
@@ -14,7 +15,7 @@ import NotFound from './components/containers/NotFound';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <Container className="App">
         <main>
           <Switch>
             <Route exact path="/" component={ Login }/>
@@ -23,7 +24,7 @@ function App() {
             <Route exact path="/*" component={ NotFound }/>
           </Switch>
         </main>
-      </div>
+      </Container>
     </Router>
   );
 }

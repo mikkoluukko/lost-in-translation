@@ -1,6 +1,8 @@
 import LoginForm from '../forms/LoginForm';
 import { setStorage, getStorage } from '../../utils/localStorage';
 import { Redirect, useHistory } from 'react-router-dom';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const Login = () => {
   const { user } = getStorage('react_app_session');
@@ -13,11 +15,13 @@ const Login = () => {
   };
 
   return (
-    <div>
-      {user && <Redirect to="/translator" />}
-      <h1>Login to translator</h1>
-      <LoginForm loginComplete={handleLoginComplete} />
-    </div>
+    <Row className="justify-content-md-center">
+      <Col md="4">
+        {user && <Redirect to="/translator" />}
+        <h1 className="my-4">Login to translator</h1>
+        <LoginForm className="my-4" loginComplete={handleLoginComplete} />
+      </Col>
+    </Row>
   );
 };
 

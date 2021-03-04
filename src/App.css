@@ -1,8 +1,7 @@
-html, body, #app, #app>div {
-  height: 100%
-}
-
 .App {
   text-align: center;
-  background-color: #FFC75F;
+}
+
+.sign {
+  width: 10%
 }

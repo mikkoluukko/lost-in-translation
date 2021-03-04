@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState('');
@@ -9,21 +12,19 @@ const LoginForm = (props) => {
   const handleUsernameChange = (ev) => setUsername(ev.target.value.trim());
 
   return (
-    <form>
-      <div>
-        <label>Name: </label>
-        <input
-          type="text"
-          placeholder="What's your name?"
+    <div>
+      <InputGroup className="mb-3">
+        <FormControl
+          placeholder="Enter username"
           onChange={handleUsernameChange}
         />
-      </div>
-      <div>
-        <button type="button" onClick={handleLoginClick}>
-          Login
-        </button>
-      </div>
-    </form>
+        <InputGroup.Append>
+          <Button variant="outline-secondary" onClick={handleLoginClick}>
+            Login
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+    </div>
   );
 };
 

@@ -28,10 +28,10 @@ const Translator = () => {
   return (
     <div>
       {!user && <Redirect to="/" />}
-      <Button className="m-2" variant="info" type="button" onClick={redirect}>
+      <Button className="mt-4" variant="outline-secondary" type="button" onClick={redirect}>
         {user}'s profile page
       </Button>
-      <h1>Welcome to the Translator</h1>
+      <h1 className="my-4">Sign Language Translator</h1>
       <TranslatorForm translate={handleTranslate} />
       <TranslatedBox display={displayTranslation} />
     </div>
