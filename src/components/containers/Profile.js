@@ -22,17 +22,27 @@ const Profile = (props) => {
   }
 
   const redirect = () => {
-    history.push('/translator')
-  }
-  
+    history.push('/translator');
+  };
+
   return (
     <Row className="justify-content-md-center">
-      <Col md="6">
+      <Col md="5">
         {!user && <Redirect to="/" />}
-        <Button className="mt-4 mx-2" variant="outline-secondary" type="button" onClick={redirect}>
+        <Button
+          className="mt-4 mx-2"
+          variant="outline-secondary"
+          type="button"
+          onClick={redirect}
+        >
           Back to translator
         </Button>
-        <Button className="mt-4 mx-2" variant="outline-secondary" type="button" onClick={handleLogoutClick}>
+        <Button
+          className="mt-4 mx-2"
+          variant="outline-secondary"
+          type="button"
+          onClick={handleLogoutClick}
+        >
           Logout and clear history
         </Button>
         <h1 className="my-4">{user}'s translation history:</h1>
