@@ -6,18 +6,24 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+// Variable inputText is bound to input field's value. Separate variable
+// originalText is used as the argument for the translate function. This is to
+// allow entering whitespace and uppercase characters in input field (even 
+// though leading and trailing whitespace are trimmed off and all characters
+// are converted to lowercase in translation).
 const TranslatorForm = (props) => {
   const [warningText, setWarningText] = useState('Input required.');
+  const [inputText, setInputText] = useState('');
   const [originalText, setOriginalText] = useState('');
   const [validated, setValidated] = useState(false);
 
   const handleTranslateClick = () => {
-    console.log(originalText.length);
     if (originalText.length === 0 || originalText.length > 40) {
       setValidated(true);
     } else {
       props.translate(originalText);
       setOriginalText('');
+      setInputText('');
       setValidated(false);
     }
   };
@@ -28,6 +34,7 @@ const TranslatorForm = (props) => {
     } else if (ev.target.value.trim().length === 0) {
       setWarningText('Input required.');
     }
+    setInputText(ev.target.value);
     setOriginalText(ev.target.value.trim().toLowerCase());
   };
 
@@ -49,7 +56,7 @@ const TranslatorForm = (props) => {
               pattern=".{0,40}"
               required
               placeholder="Enter text to translate"
-              value={originalText}
+              value={inputText}
               onChange={handleTextChange}
             />
             <InputGroup.Append>
