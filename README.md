@@ -44,7 +44,7 @@ from the input, the input field will be cleared and the translation will appear
 in the area under the button. In the top part of the screen there is also
 a button that takes the user to their profile page.
 
-![image of the translation page](https://https://github.com/mikkoluukko/lost-in-translation/blob/master/readme-images/translation-page.png)
+![image of the translation page](https://github.com/mikkoluukko/lost-in-translation/blob/master/readme-images/profile-page.png)
 
 ### Profile page
 
@@ -54,7 +54,7 @@ logout and clear the translation history or return to translation page. On
 logout user's name and their  history will be removed and the user will be 
 redirected to the login page. 
 
-![image of the profile page](https://https://github.com/mikkoluukko/lost-in-translation/blob/master/readme-images/profile-page.png)
+![image of the profile page](https://github.com/mikkoluukko/lost-in-translation/blob/master/readme-images/profile-page.png)
 
 
 ## Getting Started with Create React App
