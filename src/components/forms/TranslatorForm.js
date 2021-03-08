@@ -6,9 +6,9 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-// Variable inputText is bound to input field's value. Separate variable
+// Input field's value is bound to variable inputText. Separate variable
 // originalText is used as the argument for the translate function. This is to
-// allow entering whitespace and uppercase characters in input field (even 
+// allow entering of whitespace and uppercase characters in input field (even
 // though leading and trailing whitespace are trimmed off and all characters
 // are converted to lowercase in translation).
 const TranslatorForm = (props) => {
@@ -18,7 +18,11 @@ const TranslatorForm = (props) => {
   const [validated, setValidated] = useState(false);
 
   const handleTranslateClick = () => {
-    if (originalText.length === 0 || originalText.length > 40) {
+    if (
+      originalText.length === 0 ||
+      originalText.length > 40 ||
+      !originalText.match(/^[A-Za-z ]+$/)
+    ) {
       setValidated(true);
     } else {
       props.translate(originalText);
@@ -33,6 +37,8 @@ const TranslatorForm = (props) => {
       setWarningText('Maximum input length is 40 characters.');
     } else if (ev.target.value.trim().length === 0) {
       setWarningText('Input required.');
+    } else if (!ev.target.value.match(/^[A-Za-z ]+$/)) {
+      setWarningText('Only letters from a to z and whitespace allowed.');
     }
     setInputText(ev.target.value);
     setOriginalText(ev.target.value.trim().toLowerCase());
@@ -49,11 +55,11 @@ const TranslatorForm = (props) => {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md="5">
+      <Col lg="6" md="8">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <InputGroup>
             <FormControl
-              pattern=".{0,40}"
+              pattern="[A-Za-z ]+.{0,40}"
               required
               placeholder="Enter text to translate"
               value={inputText}

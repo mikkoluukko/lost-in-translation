@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md="4">
+      <Col lg="5" md="8">
         {user && <Redirect to="/translator" />}
         <h1 className="my-4">Login to translator</h1>
         <LoginForm className="my-4" loginComplete={handleLoginComplete} />
